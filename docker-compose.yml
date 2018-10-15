@@ -4,9 +4,9 @@ services:
     image: wordpress:latest
     container_name: verification_wordpress
     volumes:
-      - "$PWD:/var/www/html"
-      - "$PWD/.docker/backup:/tmp/backup"
-      - "$PWD/.docker/log:/tmp/log"
+      - "./:/var/www/html"
+      - "./.docker/backup:/tmp/backup"
+      - "./.docker/log:/tmp/log"
     ports:
       - '8088:80'
     depends_on:
