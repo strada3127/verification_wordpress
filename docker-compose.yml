@@ -9,25 +9,18 @@ services:
       - "./.docker/log:/tmp/log"
     ports:
       - '8088:80'
-    depends_on:
-      - db
     environment:
       WORDPRESS_DB_HOST: "db:3306"
-    networks:
-      - my_wordpress_network
     env_file: .env
+    links:
+      - db
 
   db:
     image: mysql:5.7
     container_name: verification_db
     volumes:
       - "db-data:/var/lib/mysql"
-    networks:
-      - my_wordpress_network
     env_file: .env
 
 volumes:
   db-data:
-
-networks:
-  my_wordpress_network:
